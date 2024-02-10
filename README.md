@@ -3,5 +3,10 @@ the following libraries need to be installed on the IDE to run the program effec
 
 please copy and paste on your python terminal:
 pip install appopener
+
+
 pip install pillow
+
+
+
 pip install pywebview
