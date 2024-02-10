@@ -2,6 +2,9 @@ This is an Interactive, friendly user interface that offers students access to s
 the following libraries need to be installed on the IDE to run the program effectively
 
 please copy and paste on your python terminal:
+
+
+
 pip install appopener
 
 
