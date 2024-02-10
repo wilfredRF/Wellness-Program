@@ -1,7 +1,12 @@
 import tkinter as tk
 import tkinter.font as tkFont
 import random
+
+from PIL import ImageTk
+from study import *
+import webview
 from journal import *
+
 
 # This is the home screen of the wellness app
 
@@ -10,7 +15,13 @@ root = tk.Tk()
 root.geometry("400x500")
 root.title("Wellness Program")
 
+def resources():
+    webview.create_window('Geeks for Geeks', 'https://www.mcneese.edu/campus-life/rec/wellness-program')
+    webview.start()
 
+def resources1():
+    webview.create_window('Geeks for Geeks', 'https://www.lcmh.com/')
+    webview.start()
 def home_page(username):
     for widgets in root.winfo_children():
         widgets.destroy()
@@ -38,11 +49,14 @@ def home_page(username):
                     foreground="#97BC62", borderwidth=1, relief="raised")
     text1.pack(padx=5, pady=15)
 
-    memoir_button = tk.Button(root, text=" Personal Journal  😸 ", command= lambda: textEditor() )
+    memoir_button = tk.Button(root, text=" Personal Journal  😸 ", command= lambda: textEditor())
     memoir_button.place(x=240, y=680)
 
-    quote_button = tk.Button(root, text=" Quote of the Day 😇 ")
-    quote_button.place(x=740, y=680)
+    quote_button = tk.Button(root, text=" Mental-health Resources (On-Campus) 😇 ", command= lambda: resources())
+    quote_button.place(x=680, y=680)
+
+    quote_button1 = tk.Button(root, text=" Mental-health Resources (Off-Campus) 😇 ", command=lambda: resources1())
+    quote_button1.place(x=680, y=740)
 
     study_button = tk.Button(root, text=" Study 🤩 ")
     study_button.place(x=1280, y=680)
@@ -62,7 +76,6 @@ def home_page(username):
 
 def switch(page):
     page()
-
 
 # Background image
 

@@ -1,17 +1,20 @@
 import tkinter as tk
 import tkinter.font as tkFont
+import AppOpener as app
+import subprocess, os, platform
 def textEditor():
     root = tk.Tk()
 
     root.title('Personal Journal Entry')
     root.geometry("600x600")
 
+    journal = []
     # Create the menu: THis will contain 'File' 'Format' 'search'
     menu = tk.Menu(root)
     root.configure(menu=menu)
-    root.configure(background="#5c9aef")
+    root.configure(background="#2C5F2D")
     file_menu = tk.Menu(menu, tearoff=0, foreground="pink", background="#5c9aef")
-    label = tk.Label(root, text="Personal Journal 🤠", font=("Georgia",32), background="#003f39", foreground="White")
+    label = tk.Label(root, text="Personal Journal 🤠", font=("Georgia",32), background="#97BC62", foreground="#2C5F2D")
     label.pack(padx=5, pady=10)
     menu.add_cascade(label="File", menu=file_menu)
 
@@ -38,7 +41,7 @@ def textEditor():
     def font_menu():
         fonts = list(tkFont.families())
         fonts.sort()
-        print(fonts)
+        #print(fonts)
         listbox = tk.Listbox(root, selectmode=tk.SINGLE)
         for font in fonts:
             listbox.insert('end', font)
@@ -91,6 +94,8 @@ def textEditor():
 
         listbox.bind('<ButtonRelease>', color_chooser)
 
+
+
     # font_sub_menu = tk.Menu(format_menu)
     format_menu.add_command(label="Font", command=font_menu)
 
@@ -115,8 +120,27 @@ def textEditor():
     frame.propagate(False)
     frame.columnconfigure(0, weight=10)
 
-    text = tk.Text(frame, font=our_font)
+    text = tk.Text(frame, font=our_font, background="#e6fbf2",)
     text.pack()
+
+    def get_words():
+        journal.append(text.get("1.0", tk.END))
+        #print(text.get("1.0", tk.END))
+
+        for word in journal:
+            print(word)
+            with open('Journal.txt','w') as f:
+                f.write(word+'\n')
+
+    def open_words():
+        app.open("Notepad")
+        subprocess.check_call(('open', 'Journal.txt'))
+
+    get_text = tk.Button(root, text="Save", command=lambda: get_words())
+    get_text.place(x=740, y=680)
+
+    open_text = tk.Button(root, text="Open Journal", command=lambda: open_words())
+    open_text.place(x=840, y=680)
 
     root.mainloop()
 

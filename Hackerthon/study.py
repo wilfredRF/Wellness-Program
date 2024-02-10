@@ -66,5 +66,5 @@ class StudySessionGUI(tk.Tk):
         messagebox.showinfo("Congratulations!", "GREAT JOB! YOU COMPLETED YOUR STUDY TIME!")
 
 if __name__ == "__main__":
-    app = StudySessionGUI()
-    app.mainloop()
+    root = StudySessionGUI()
+    root.mainloop()
