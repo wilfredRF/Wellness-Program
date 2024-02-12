@@ -13,3 +13,6 @@ pip install pillow
 
 
 pip install pywebview
+Contributors: 
+wilfredRF : Implemented the interactive and user-centric study timer which enables student users to control the length of their study time and
+            how frequently they need breaks in between their study sessions using useful python libraries and tools. 
